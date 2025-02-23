@@ -1,0 +1,144 @@
+<html>
+  <head>
+    <title>INST377 - Lab 4</title>
+    <style>
+      body {
+        background-color: #add8e6;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+      }
+
+      #page-title {
+        font-size: 30px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+      }
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        width: 80%;
+        margin: 0 auto;
+        justify-content: center;
+        align-items: center;
+      }
+      .section {
+        background-color: #6a0dad;
+        border-radius: 10px;
+        border: 2px solid white;
+        padding: 20px;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+        text-align: center;
+      }
+
+      label {
+        color: white;
+        font-weight: bold;
+        display: in-line block;
+        margin-bottom: 5px;
+      }
+
+      input {
+        padding: 8px;
+        width: 50%;
+        border-radius: 5px;
+        border: 1px solid gray;
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      button {
+        background-color: white;
+        color: black;
+        border: 1px solid gray;
+        padding: 8px 12px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 5px;
+        transition: background-color 03s ease-in-out;
+      }
+
+      button:hover {
+        background-color: lightgray;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1 id="page-title">INST377 - Lab 4</h1>
+
+    <!-- Alert Me Section -->
+    <div class="grid-container">
+      <div class="section">
+        <form id="alertform">
+          <label for="textInput">Name:</label>
+          <input type="text" id="nameInput" required />
+          <button type="button" onclick="showAlert()">Alert Me</button>
+        </form>
+      </div>
+
+      <!-- Change Color Section -->
+      <div class="section">
+        <button onclick="changeBackgroundColor()">Change Color</button>
+      </div>
+
+      <!-- Text Tester Section -->
+      <div class="section">
+        <form id="textForm">
+          <label for="textInput">Text tester:</label>
+          <input type="text" id="textInput" />
+          <button type="button" onclick="validateText()">Validate Text</button>
+        </form>
+      </div>
+
+      <!-- Add Text Section -->
+      <div class="section">
+        <button onclick="addText()">Add Text</button>
+      </div>
+    </div>
+
+    <script>
+      // Alert me function
+      function showAlert() {
+        let name = document.getElementById("nameInput").value.trim();
+        if (name === "") {
+          alert("Please enter your name!");
+        } else {
+          alert("Hi " + name + "!");
+        }
+      }
+
+      // Change Color Function
+      function changeBackgroundColor() {
+        if (document.body.style.backgroundColor === "blue") {
+          document.body.style.backgroundColor = "green";
+        } else {
+          document.body.style.backgroundColor = "blue";
+        }
+      }
+
+      // Validate Text Function
+      function validateText() {
+        let text = document.getElementById("textInput").value;
+        let validationRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+
+        if (validationRegex.test(text)) {
+          alert("Special characters are not allowed!");
+        } else {
+          alert("Text is valid!");
+        }
+      }
+
+      // Add Text Function
+      function addText() {
+        let heading = document.getElementById("page-title");
+        if (!heading.innerText.includes("- Adding Text")) {
+          heading.innerText += " - Adding Text";
+        }
+      }
+    </script>
+  </body>
+</html>
